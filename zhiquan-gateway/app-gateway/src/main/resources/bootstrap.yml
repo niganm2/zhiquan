@@ -1,0 +1,23 @@
+server:
+  port: 51601
+spring:
+  application:
+    name: app-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.100.128:8848
+        namespace: dev-zhiquan
+      config:
+        server-addr: 192.168.100.128:8848
+        namespace: dev-zhiquan
+        file-extension: yml
+        # 公共配置：日志、网关公共项（跨域、默认过滤器）
+        # 注意：网关是 WebFlux 应用，不引入 shared-jdbc / shared-mybatis
+        shared-configs:
+          - data-id: shared-log.yml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: shared-gateway.yml
+            group: DEFAULT_GROUP
+            refresh: true
