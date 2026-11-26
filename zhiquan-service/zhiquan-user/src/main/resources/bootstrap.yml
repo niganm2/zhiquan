@@ -1,0 +1,30 @@
+server:
+  port: 51801
+
+spring:
+  application:
+    name: zhiquan-user
+  cloud:
+    nacos:
+      # 虚拟机上的 nacos
+      server-addr: 192.168.100.128:8848
+      discovery:
+        # 命名空间 dev_zhiquan，服务注册到这个命名空间下
+        namespace: dev-zhiquan
+        group: DEFAULT_GROUP
+      config:
+        namespace: dev-zhiquan
+        group: DEFAULT_GROUP
+        file-extension: yml
+        refresh-enabled: true
+        # 公共配置
+        shared-configs:
+          - data-id: shared-log.yml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: shared-jdbc.yml
+            group: DEFAULT_GROUP
+            refresh: true
+          - data-id: shared-mybatis.yml
+            group: DEFAULT_GROUP
+            refresh: true
